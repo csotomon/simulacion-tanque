@@ -1,3 +1,20 @@
 <h1>
-  {{title}}
+  Simulaci&oacute;n de vaciado de un tanque {{ticks}}
 </h1>
+<table>
+  <tr>
+    <td>
+      <canvas #myChart class="miCanvas" width="512" height="512"></canvas>
+    </td>
+    <td>
+      <div>
+        rectw<input type="range" min="1" max="400" [(ngModel)]="rectW" />{{rectW}}<br />
+        recth<input type="range" min="0" max="210" [(ngModel)]="rectH" />{{rectH}}<br />
+        posX<input type="range" min="1" max="400" [(ngModel)]="posX" />{{posX}}<br />
+        posY<input type="range" min="-400" max="400" [(ngModel)]="posY" />{{posY}}<br />
+        <button (click)="onIniciar()">Iniciar Simulacion</button><br/>
+      </div>
+    </td>
+  </tr>
+</table>
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
