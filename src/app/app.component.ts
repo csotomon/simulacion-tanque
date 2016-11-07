@@ -35,49 +35,48 @@ export class AppComponent {
 
   ngOnInit(){
       
-      this.timer = Observable.timer(2000,1000);
-      this.timer.subscribe(t => this.tickerFunc(t));
+      
   }
 
   tickerFunc(tick){
     
-    if(this.simular){
-      this.ticks++;
+
+      this.ticks = tick;
       console.log("segundo :" +tick + " altura:" + this.rectH);
       let calculo = (this.radioOrificio/this.radioTanque) * (this.radioOrificio/this.radioTanque) * Math.sqrt(2*this.gravedad*this.rectH);
-      if (calculo>0){
+      if (this.rectH - calculo>0){
         this.rectH = this.rectH - calculo;
         this.dibujarAgua();
       }
-      else
+      else{
+          this.rectH =0
           this.simular = false;
-    }
-    
-    
+          this.timer.unsubscribe();
+      } 
   }
 
   ngAfterViewInit() {
     this.dibujarAgua();
-
   }
 
   ngOnDestroy(){
         console.log("Destroy timer");
         // unsubscribe here
         this.timer.unsubscribe();
-
     }
 
   setearValores(){
     this.rectW = 184;
-    this.rectH = 143; //210
+    this.rectH = 143;
     this.posX = 164;
     this.posY = 215;
   }
 
   onIniciar() {
-    this.setearValores();
+    //this.setearValores();
     this.simular = true;
+    this.timer = Observable.timer(2000,1000);
+    this.timer.subscribe(t => this.tickerFunc(t));
   }
 
   private dibujarAgua(){

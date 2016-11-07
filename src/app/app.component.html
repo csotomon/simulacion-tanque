@@ -1,5 +1,5 @@
 <h1>
-  Simulaci&oacute;n de vaciado de un tanque {{ticks}}
+  Simulaci&oacute;n de vaciado de un tanque
 </h1>
 <table>
   <tr>
@@ -8,11 +8,12 @@
     </td>
     <td>
       <div>
-        rectw<input type="range" min="1" max="400" [(ngModel)]="rectW" />{{rectW}}<br />
-        recth<input type="range" min="0" max="210" [(ngModel)]="rectH" />{{rectH}}<br />
-        posX<input type="range" min="1" max="400" [(ngModel)]="posX" />{{posX}}<br />
-        posY<input type="range" min="-400" max="400" [(ngModel)]="posY" />{{posY}}<br />
+        Altura del tanque : <input type="range" min="0" max="143" [(ngModel)]="rectH" (ngModelChange)="dibujarAgua()"/>{{rectH}}<br />
+        Gravedad: <input type="text" [(ngModel)]="gravedad"><br />
+        Radio del tanque : <input type="text" [(ngModel)]="radioTanque"><br />
+        Radio del orificio : <input type="text" [(ngModel)]="radioOrificio"><br />
         <button (click)="onIniciar()">Iniciar Simulacion</button><br/>
+        <h3>Tiempo {{ticks}} segundos</h3>
       </div>
     </td>
   </tr>
