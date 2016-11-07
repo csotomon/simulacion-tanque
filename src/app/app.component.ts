@@ -46,13 +46,13 @@ export class AppComponent {
       let calculo = (this.radioOrificio/this.radioTanque) * (this.radioOrificio/this.radioTanque) * Math.sqrt(2*this.gravedad*this.rectH);
       if (this.rectH - calculo>0){
         this.rectH = this.rectH - calculo;
-        this.dibujarAgua();
       }
       else{
-          this.rectH =0
+          this.rectH =0;        
           this.simular = false;
           this.timer.unsubscribe();
-      } 
+      }
+      this.dibujarAgua();
   }
 
   ngAfterViewInit() {
@@ -61,8 +61,6 @@ export class AppComponent {
 
   ngOnDestroy(){
         console.log("Destroy timer");
-        // unsubscribe here
-        this.timer.unsubscribe();
     }
 
   setearValores(){
